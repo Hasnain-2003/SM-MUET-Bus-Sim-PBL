@@ -1,0 +1,10 @@
+digraph G { rankdir=LR; graph [fontname="Times-Roman", dpi=200, pad=0.15, nodesep=0.3, ranksep=0.4]; node [fontname="Times-Roman", fontsize=20]; edge [fontname="Times-Roman", fontsize=17];
+ node [shape=ellipse, style=filled, fillcolor="#EAF1FB", color="#1F4E79"];
+ N [label="ARRIVES", shape=circle, fillcolor="white"];
+ W [label="WAITING\n(FIFO queue)", fillcolor="#FFF2CC", color="#BF9000"];
+ B [label="BOARDED", fillcolor="#E2F0D9", color="#548235"];
+ L [label="ABANDONED\n(other transport)", fillcolor="#F8D7D3", color="#C00000"];
+ N -> W [label=" t = arrival"];
+ W -> B [label=" bus loads him\n (load < cap)"];
+ W -> L [label=" wait > patience\n 20 + Exp(30) min"];
+}

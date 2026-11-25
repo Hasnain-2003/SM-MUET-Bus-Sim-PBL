@@ -1,0 +1,7 @@
+{
+ "little_mean_err_pct": 0.19609517403439838,
+ "little_max_err_pct": 0.39509977081774206,
+ "batch_sim": 4.85035456500511,
+ "batch_theory": 4.833333333333333,
+ "batch_n": 10754
+}

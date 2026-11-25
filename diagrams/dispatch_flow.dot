@@ -1,0 +1,16 @@
+digraph G { rankdir=TB; graph [fontname="Times-Roman", dpi=200, pad=0.15, nodesep=0.3, ranksep=0.4]; node [fontname="Times-Roman", fontsize=20]; edge [fontname="Times-Roman", fontsize=17];
+ node [shape=box, style="rounded,filled", fillcolor="#EAF1FB", color="#1F4E79"];
+ a [label="Tick (every 1 min)"];
+ b [label="Remove students whose patience ran out\nUpdate forecast  lambda_hat"];
+ c [label="Any bus parked?", shape=diamond, fillcolor="#FFF2CC", color="#BF9000"];
+ d [label="Threshold for each terminal j:\ntheta_j = clip( min(theta_full,\nlambda_hat_j * w_hold), th_min, cap )\n(queue net of reserved seats)"];
+ e [label="Eligible?\nq_j >= theta_j\nOR ( q_j >= q_min\nAND head wait >= W_max )", shape=diamond, fillcolor="#FFF2CC", color="#BF9000"];
+ f [label="Score eligible terminals:\nq_j/cap + beta*wait_j/W_max\n- gamma*dead-head/4 min"];
+ g [label="Release oldest parked bus\nto best terminal\n(dead-head if elsewhere)", fillcolor="#E2F0D9", color="#548235"];
+ h [label="Board up to 60 (FIFO)\nRound trip, return to pool"];
+ z [label="Wait for next tick"];
+ a -> b -> c;
+ c -> z [label=" no"]; c -> d [label=" yes"];
+ d -> e; e -> z [label=" no"]; e -> f [label=" yes"]; f -> g -> h -> z;
+ z -> a [style=dashed];
+}

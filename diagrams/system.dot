@@ -1,0 +1,14 @@
+digraph G { rankdir=TB; graph [fontname="Times-Roman", dpi=220, pad=0.2, nodesep=0.35, ranksep=0.45]; node [fontname="Times-Roman", fontsize=14]; edge [fontname="Times-Roman", fontsize=12];
+ node [shape=box, style="rounded,filled", fillcolor="#EAF1FB", color="#1F4E79"];
+ S [label="Students\n(non-homogeneous Poisson arrivals, peak-shaped)"];
+ Q1 [label="STC queue\n(FIFO, students may give up)", fillcolor="#FFF2CC", color="#BF9000"];
+ Q2 [label="Main Gate queue\n(FIFO, students may give up)", fillcolor="#FFF2CC", color="#BF9000"];
+ D [label="Dispatcher  (policy S0 / P1 / P2 / P3)\nwakes every 1 minute", fillcolor="#E2F0D9", color="#548235"];
+ P [label="Ready-bus pool (24 Points)"];
+ R [label="Round trip: campus - Hyderabad - campus\n(lognormal time + random incidents)"];
+ S -> Q1 [label=" 57%"]; S -> Q2 [label=" 43%"];
+ Q1 -> D [label="queue length,\nhead-of-line wait"]; Q2 -> D;
+ D -> P [label="release a bus"];
+ P -> R [label="depart (load <= cap)"];
+ R -> P [label="return via Main Gate"];
+}

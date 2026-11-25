@@ -1,0 +1,15 @@
+digraph G { rankdir=TB; graph [fontname="Times-Roman", dpi=200, pad=0.15, nodesep=0.3, ranksep=0.4]; node [fontname="Times-Roman", fontsize=20]; edge [fontname="Times-Roman", fontsize=17];
+ node [shape=ellipse, style=filled, fillcolor="#EAF1FB", color="#1F4E79"];
+ R [label="READY\n(parked)", fillcolor="#E2F0D9", color="#548235"];
+ D [label="DEAD-HEADING\n(4 min)"];
+ B [label="BOARDING\n(0.5 + 0.04 n min)", fillcolor="#FFF2CC", color="#BF9000"];
+ T [label="EN ROUTE\n(round trip)"];
+ A [label="ARRIVED\n(Main Gate)"];
+ R -> B [label=" released:\n bus at terminal"];
+ R -> D [label=" released:\n bus elsewhere"];
+ D -> B [label=" arrives"];
+ D -> R [label=" queue empty", style=dashed, constraint=false];
+ B -> T [label=" n >= 1"];
+ T -> A [label=" trip time\n elapsed"];
+ A -> R [label=" static: home\n pooled: Main Gate"];
+}

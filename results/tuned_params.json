@@ -1,0 +1,20 @@
+{
+ "P1": {
+  "theta": 60,
+  "w_max": 20,
+  "q_min": 8
+ },
+ "P2": {
+  "theta": 54,
+  "w_max": 20,
+  "q_min": 8
+ },
+ "P3": {
+  "theta_full": 60,
+  "k": 0,
+  "w_hold": 14,
+  "th_min": 10,
+  "w_max": 20,
+  "gamma": 0.25
+ }
+}
